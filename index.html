@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Private Wedding Photo Upload</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav">
+        <span class="nav__brand">Zack &amp; Sean</span>
+        <span class="nav__date">February 2026</span>
+      </nav>
+      <div class="hero__content">
+        <p class="hero__kicker">We’re so glad you’re here</p>
+        <h1>Upload your photos privately</h1>
+        <p class="hero__lead">
+          We’re collecting guest photos through a private Google Form so only we can see the
+          uploads. Scan the QR code or tap the button below to add your favorites.
+        </p>
+        <div class="hero__actions">
+          <a class="button button--primary" href="#qr">View upload QR</a>
+          <a
+            class="button button--ghost"
+            href="https://forms.gle/your-form-id"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open upload form
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="page" id="qr">
+      <section class="card" aria-labelledby="page-title">
+        <div class="card__header">
+          <p class="eyebrow">Private upload</p>
+          <h2 id="page-title">Scan to upload your photos</h2>
+          <p class="lead">
+            This QR code opens a private Google Form upload. Only we can access the submissions.
+            If prompted, sign in with a Google account to upload.
+          </p>
+        </div>
+        <div class="qr-wrapper" role="status" aria-live="polite">
+          <img
+            id="qr-image"
+            class="qr-image"
+            alt="QR code for the private wedding photo upload form"
+            src="https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=https%3A%2F%2Fforms.gle%2Fyour-form-id"
+            width="280"
+            height="280"
+          />
+          <p id="qr-status" class="status-message">Ready to scan.</p>
+        </div>
+        <div class="details">
+          <div>
+            <p class="label">Upload form link</p>
+            <a
+              id="album-link"
+              href="https://forms.gle/your-form-id"
+              target="_blank"
+              rel="noreferrer"
+            >
+              https://forms.gle/your-form-id
+            </a>
+          </div>
+          <button id="copy-button" class="button button--primary" type="button">Copy link</button>
+        </div>
+        <div class="validation" aria-live="polite">
+          <p id="validation-summary" class="validation__summary"></p>
+          <ul id="validation-list" class="validation__list"></ul>
+        </div>
+        <div class="steps">
+          <h3>How it works</h3>
+          <ol>
+            <li>Scan the QR code or tap the upload link.</li>
+            <li>Choose your photos and submit the form.</li>
+            <li>We’ll receive your photos privately in our Drive.</li>
+          </ol>
+        </div>
+        <noscript>
+          <p class="note">
+            JavaScript is disabled, so the QR code may not refresh automatically. You can still tap
+            the upload link above.
+          </p>
+        </noscript>
+        <p class="note">
+          If you run into issues, let us know and we’ll share another way to send photos.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Thank you for celebrating with us.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
