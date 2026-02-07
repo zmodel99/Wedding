@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Share Your Wedding Photos</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav">
+        <span class="nav__brand">Zack &amp; Sean</span>
+        <span class="nav__date">February 2026</span>
+      </nav>
+      <div class="hero__content">
+        <p class="hero__kicker">We’re so glad you’re here</p>
+        <h1>Share your moments from our wedding day</h1>
+        <p class="hero__lead">
+          Scan the QR code to upload photos straight to our Google Photos album. We can’t wait to
+          relive the day through your eyes.
+        </p>
+        <div class="hero__actions">
+          <a class="button button--primary" href="#qr">View QR code</a>
+          <a class="button button--ghost" href="https://photos.app.goo.gl/akGScybc5DNwRKex8" target="_blank" rel="noreferrer">
+            Open album link
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="page" id="qr">
+      <section class="card" aria-labelledby="page-title">
+        <div class="card__header">
+          <p class="eyebrow">Photo upload</p>
+          <h2 id="page-title">Scan to add your photos</h2>
+          <p class="lead">
+            Point your camera at the code below or tap the link. You can upload directly from your
+            phone once the album opens.
+          </p>
+        </div>
+        <div class="qr-wrapper" role="status" aria-live="polite">
+          <img
+            id="qr-image"
+            class="qr-image"
+            alt="QR code for the wedding photo upload album"
+            src="https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=https%3A%2F%2Fphotos.app.goo.gl%2FakGScybc5DNwRKex8"
+            width="280"
+            height="280"
+          />
+          <p id="qr-status" class="status-message">Ready to scan.</p>
+        </div>
+        <div class="details">
+          <div>
+            <p class="label">Album link</p>
+            <a
+              id="album-link"
+              href="https://photos.app.goo.gl/akGScybc5DNwRKex8"
+              target="_blank"
+              rel="noreferrer"
+            >
+              https://photos.app.goo.gl/akGScybc5DNwRKex8
+            </a>
+          </div>
+          <button id="copy-button" class="button button--primary" type="button">Copy link</button>
+        </div>
+        <div class="validation" aria-live="polite">
+          <p id="validation-summary" class="validation__summary"></p>
+          <ul id="validation-list" class="validation__list"></ul>
+        </div>
+        <noscript>
+          <p class="note">
+            JavaScript is disabled, so the QR code may not refresh automatically. You can still tap
+            the album link above.
+          </p>
+        </noscript>
+        <p class="note">
+          If your camera doesn’t open automatically, tap the link above to access the album.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Thank you for celebrating with us.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
