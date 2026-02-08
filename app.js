@@ -101,7 +101,6 @@ const prompts = [
   "Record a 6-second ‘thank you / goodnight’ clip for the couple.",
 ];
 
-
 const lastPromptKey = "wedding-last-prompt";
 const promptText = document.getElementById("prompt-text");
 const getChallengeButton = document.getElementById("get-challenge");
