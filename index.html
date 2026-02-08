@@ -3,86 +3,150 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Share Your Wedding Photos</title>
+    <title>Wedding Photo Challenge | Zack & Sean</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="hero">
       <nav class="nav">
-        <span class="nav__brand">Zack &amp; Sean</span>
-        <span class="nav__date">February 2026</span>
+        <span class="nav__brand">Zack &amp; Sean Wedding</span>
+        <span class="nav__date">February 21, 2026</span>
       </nav>
       <div class="hero__content">
-        <p class="hero__kicker">We’re so glad you’re here</p>
-        <h1>Share your moments from our wedding day</h1>
+        <p class="hero__eyebrow">Wedding Photo Challenge</p>
+        <h1>Capture the moments, share the joy</h1>
         <p class="hero__lead">
-          Scan the QR code to upload photos straight to our Google Photos album. We can’t wait to
-          relive the day through your eyes.
+          Grab a playful photo or video challenge and upload it to our shared album. Every moment
+          helps us relive the day through your eyes.
         </p>
         <div class="hero__actions">
-          <a class="button button--primary" href="#qr">View QR code</a>
-          <a class="button button--ghost" href="https://photos.app.goo.gl/akGScybc5DNwRKex8" target="_blank" rel="noreferrer">
-            Open album link
+          <button id="get-challenge" class="button button--primary" type="button">
+            Get a challenge
+          </button>
+          <a
+            class="button button--ghost"
+            href="https://photos.app.goo.gl/akGScybc5DNwRKex8"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Upload now
           </a>
         </div>
       </div>
     </header>
 
-    <main class="page" id="qr">
-      <section class="card" aria-labelledby="page-title">
+    <main class="page">
+      <section class="card" aria-labelledby="status-title">
         <div class="card__header">
-          <p class="eyebrow">Photo upload</p>
-          <h2 id="page-title">Scan to add your photos</h2>
-          <p class="lead">
-            Point your camera at the code below or tap the link. You can upload directly from your
-            phone once the album opens.
-          </p>
+          <p class="eyebrow">Today’s timing</p>
+          <h2 id="status-title">Pick your moment</h2>
+          <p id="status-message" class="lead"></p>
         </div>
-        <div class="qr-wrapper" role="status" aria-live="polite">
-          <img
-            id="qr-image"
-            class="qr-image"
-            alt="QR code for the wedding photo upload album"
-            src="https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=https%3A%2F%2Fphotos.app.goo.gl%2FakGScybc5DNwRKex8"
-            width="280"
-            height="280"
-          />
-          <p id="qr-status" class="status-message">Ready to scan.</p>
+        <div id="segment-toggle" class="segment-toggle" role="group" aria-label="Pick your moment">
+          <button class="pill" type="button" data-segment="cocktail">Cocktail Hour</button>
+          <button class="pill" type="button" data-segment="reception">Reception</button>
         </div>
-        <div class="details">
-          <div>
-            <p class="label">Album link</p>
-            <a
-              id="album-link"
-              href="https://photos.app.goo.gl/akGScybc5DNwRKex8"
-              target="_blank"
-              rel="noreferrer"
-            >
-              https://photos.app.goo.gl/akGScybc5DNwRKex8
-            </a>
+        <div class="filters" aria-label="Filters">
+          <div class="filter-group">
+            <p class="filter-label">Type</p>
+            <div class="pill-group" role="group" aria-label="Filter by type">
+              <button class="pill is-active" type="button" data-filter="type" data-value="all">
+                All
+              </button>
+              <button class="pill" type="button" data-filter="type" data-value="photo">
+                Photo
+              </button>
+              <button class="pill" type="button" data-filter="type" data-value="video">
+                Video
+              </button>
+              <button class="pill" type="button" data-filter="type" data-value="either">
+                Either
+              </button>
+            </div>
           </div>
-          <button id="copy-button" class="button button--primary" type="button">Copy link</button>
+          <div class="filter-group">
+            <p class="filter-label">Vibe</p>
+            <div class="pill-group" role="group" aria-label="Filter by vibe">
+              <button class="pill is-active" type="button" data-filter="vibe" data-value="all">
+                All
+              </button>
+              <button class="pill" type="button" data-filter="vibe" data-value="easy">
+                Easy
+              </button>
+              <button class="pill" type="button" data-filter="vibe" data-value="medium">
+                Medium
+              </button>
+              <button class="pill" type="button" data-filter="vibe" data-value="chaos">
+                Chaos
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="validation" aria-live="polite">
-          <p id="validation-summary" class="validation__summary"></p>
-          <ul id="validation-list" class="validation__list"></ul>
+      </section>
+
+      <section class="card" aria-labelledby="challenge-title">
+        <div class="card__header">
+          <p class="eyebrow">Challenges</p>
+          <h2 id="challenge-title">Your next 6 ideas</h2>
+          <p class="lead">Tap a card to open the full prompt and mark it done.</p>
         </div>
-        <noscript>
-          <p class="note">
-            JavaScript is disabled, so the QR code may not refresh automatically. You can still tap
-            the album link above.
-          </p>
-        </noscript>
-        <p class="note">
-          If your camera doesn’t open automatically, tap the link above to access the album.
-        </p>
+        <div class="challenge-actions">
+          <button id="shuffle" class="button button--secondary" type="button">Shuffle</button>
+          <button id="completed-toggle" class="button button--ghost" type="button">
+            Completed (0)
+          </button>
+        </div>
+        <div id="challenge-grid" class="challenge-grid" role="list"></div>
+        <div id="completed-panel" class="completed" hidden>
+          <p class="completed__title">Completed challenges</p>
+          <ul id="completed-list" class="completed__list"></ul>
+        </div>
       </section>
     </main>
 
     <footer class="footer">
-      <p>Thank you for celebrating with us.</p>
+      <p class="footer__instruction">
+        After the album opens, tap Add photos to upload.
+      </p>
+      <p class="footer__link">
+        Backup link: <a href="https://photos.app.goo.gl/akGScybc5DNwRKex8">https://photos.app.goo.gl/akGScybc5DNwRKex8</a>
+      </p>
     </footer>
 
-    <script src="script.js"></script>
+    <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="modal__overlay" data-close="true"></div>
+      <div class="modal__content" role="document">
+        <button class="modal__close" type="button" aria-label="Close" data-close="true">×</button>
+        <p id="modal-meta" class="modal__meta"></p>
+        <h3 id="modal-title"></h3>
+        <p id="modal-prompt" class="modal__prompt"></p>
+        <div class="modal__actions">
+          <button id="modal-done" class="button button--primary" type="button">Mark as done</button>
+          <button id="modal-new" class="button button--secondary" type="button">Get another</button>
+          <a
+            id="modal-upload"
+            class="button button--ghost"
+            href="https://photos.app.goo.gl/akGScybc5DNwRKex8"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Upload now
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sticky-upload">
+      <a
+        class="button button--primary"
+        href="https://photos.app.goo.gl/akGScybc5DNwRKex8"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Upload now
+      </a>
+    </div>
+
+    <script src="app.js"></script>
   </body>
 </html>
