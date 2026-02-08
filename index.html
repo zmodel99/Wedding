@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Wedding Upload</title>
+    <title>Wedding Photo Challenge</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -14,12 +14,18 @@
       </header>
 
       <section class="qr">
-        <img src="wedding-photos-qr.svg" alt="Upload QR code" class="qr__image" />
+        <img
+          src=""
+          data-qr-source="wedding-photos-qr.png"
+          alt="Upload QR code"
+          class="qr__image"
+          id="qr-image"
+        />
       </section>
 
-      <section class="cta">
+      <section class="cta sticky-cta" aria-label="Upload your photos">
         <a
-          class="button button--primary"
+          class="button button--primary button--cta"
           href="https://photos.app.goo.gl/akGScybc5DNwRKex8"
           target="_blank"
           rel="noreferrer"
@@ -29,16 +35,57 @@
         <p class="cta__note">After the album opens, tap Add photos to upload.</p>
       </section>
 
-      <section class="challenge">
-        <button class="button button--secondary" id="get-challenge" type="button">
-          Get a Challenge
-        </button>
-        <div class="prompt" id="prompt-box" aria-live="polite">
-          <p id="prompt-text">Tap “Get a Challenge” to start.</p>
+      <section class="challenge" aria-labelledby="challenge-title">
+        <div class="challenge__header">
+          <h2 id="challenge-title">Wedding Photo Challenge</h2>
+          <p class="challenge__segment" id="segment-status">Segment: Reception (auto)</p>
+          <div class="segment-toggle" id="segment-toggle" role="group" aria-label="Pick a segment" hidden>
+            <button class="pill" type="button" data-segment="cocktail">Cocktail Hour</button>
+            <button class="pill" type="button" data-segment="reception">Reception</button>
+          </div>
         </div>
-        <button class="button button--ghost" id="new-prompt" type="button">
-          New prompt
-        </button>
+
+        <div class="filters">
+          <div class="filter-group" role="group" aria-label="Filter by type">
+            <p class="filter-group__label">Type</p>
+            <div class="pill-group" data-filter-group="type">
+              <button class="pill" type="button" data-filter-value="all">All</button>
+              <button class="pill" type="button" data-filter-value="photo">Photo</button>
+              <button class="pill" type="button" data-filter-value="video">Video</button>
+            </div>
+          </div>
+          <div class="filter-group" role="group" aria-label="Filter by vibe">
+            <p class="filter-group__label">Vibe</p>
+            <div class="pill-group" data-filter-group="vibe">
+              <button class="pill" type="button" data-filter-value="all">All</button>
+              <button class="pill" type="button" data-filter-value="easy">Easy</button>
+              <button class="pill" type="button" data-filter-value="medium">Medium</button>
+              <button class="pill" type="button" data-filter-value="chaos">Chaos</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="challenge__actions">
+          <button class="button button--secondary" id="get-challenge" type="button">
+            Get a Challenge
+          </button>
+        </div>
+
+        <div class="prompt-card" id="prompt-card" aria-live="polite">
+          <p class="prompt-card__title" id="prompt-title">Tap “Get a Challenge” to start.</p>
+          <p class="prompt-card__text" id="prompt-text"></p>
+          <div class="prompt-card__meta">
+            <span class="tag" id="prompt-type">Type: —</span>
+            <span class="tag" id="prompt-vibe">Vibe: —</span>
+          </div>
+        </div>
+
+        <div class="challenge__actions challenge__actions--secondary">
+          <button class="button button--ghost" id="new-prompt" type="button">New Challenge</button>
+          <button class="button button--primary" id="mark-done" type="button">Mark Done</button>
+        </div>
+
+        <p class="challenge__count">Completed: <span id="completed-count">0</span></p>
       </section>
     </main>
 
