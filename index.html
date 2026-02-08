@@ -102,6 +102,72 @@
           <ul id="completed-list" class="completed__list"></ul>
         </div>
       </section>
+      <section class="card card--challenge" aria-labelledby="challenge-title">
+        <div class="card__header">
+          <p class="eyebrow">Photo challenge</p>
+          <h2 id="challenge-title">Snap a fun prompt (optional!)</h2>
+          <p class="lead">
+            Want a little inspiration? Tap to get a playful prompt for your next shot. Prefer to
+            simply upload your favorites? Choose the “Just adding photos” option below and keep on
+            sharing.
+          </p>
+        </div>
+        <div class="challenge">
+          <div class="challenge__spotlight" role="status" aria-live="polite">
+            <p class="challenge__label">Your current prompt</p>
+            <h3 id="challenge-title-text">Capture the couple’s favorite detail.</h3>
+            <p id="challenge-tip" class="challenge__tip">
+              Look for something small that feels meaningful: a place card, bouquet ribbon, or
+              handwritten note.
+            </p>
+          </div>
+          <div class="challenge__actions">
+            <button id="challenge-button" class="button button--primary" type="button">
+              New prompt
+            </button>
+            <button id="challenge-reset" class="button button--ghost" type="button">
+              Reset prompt
+            </button>
+          </div>
+        </div>
+        <div class="challenge__options" role="radiogroup" aria-label="Photo challenge participation">
+          <label class="option-card">
+            <input type="radio" name="challenge-mode" value="prompt" checked />
+            <span>
+              <strong>I’m in for the challenge.</strong>
+              <span class="option-card__text">Show me prompts as I upload.</span>
+            </span>
+          </label>
+          <label class="option-card">
+            <input type="radio" name="challenge-mode" value="simple" />
+            <span>
+              <strong>Just adding photos.</strong>
+              <span class="option-card__text">I’ll skip prompts and upload my favorites.</span>
+            </span>
+          </label>
+        </div>
+        <div class="challenge__grid" aria-label="Sample prompt ideas">
+          <article class="challenge-card">
+            <h3>Joy burst</h3>
+            <p>Catch a laugh, cheer, or happy tear in the moment.</p>
+          </article>
+          <article class="challenge-card">
+            <h3>Dance floor vibe</h3>
+            <p>Show off the best dance move of the night.</p>
+          </article>
+          <article class="challenge-card">
+            <h3>Sweet detail</h3>
+            <p>Highlight décor, florals, or signage that feels special.</p>
+          </article>
+          <article class="challenge-card">
+            <h3>Group glow</h3>
+            <p>Gather a few friends for a candid or selfie.</p>
+          </article>
+        </div>
+        <p id="challenge-note" class="note">
+          Prompts are just for fun—any photos you share are perfect.
+        </p>
+      </section>
     </main>
 
     <footer class="footer">
